@@ -1,0 +1,145 @@
+@media only screen and (min-width: 768px) {
+  .mymodal-content {
+    width: 600px;
+  }
+
+  .mymodal {
+    padding-top: 5rem;
+  }
+  .mymodal-footer {
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mymodal-content {
+    width: 95%;
+  }
+
+  .mymodal {
+    padding-top: 3rem;
+  }
+
+  .mymodal-footer {
+    justify-content: center;
+  }
+}
+
+.mymodal {
+  position: fixed;
+  display: table;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  z-index: 10000;
+  &.show {
+    transform: scaleY(1);
+    background: rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+    .mymodal-content {
+      opacity: 0;
+      animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+    &.out {
+      z-index: -1;
+    //   animation: quickScaleDown 0s 0.5s linear forwards;
+      animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+      .mymodal-content {
+        animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+      }
+    }
+  }
+}
+
+.mymodal-content {
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.mymodal-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 0.7px solid rgba(0, 0, 0, 0.7);
+}
+
+h4 {
+  margin: 0;
+}
+
+.mymodal-close-button {
+  background-color: transparent;
+  border: none;
+}
+
+.mymodal-body {
+  padding: 3rem 1rem 1rem 1rem;
+  border-bottom: 0.7px solid rgba(0, 0, 0, 0.7);
+}
+
+.mymodal-footer {
+  display: flex;
+  padding: 1rem;
+}
+
+.mymodal-footer button {
+  margin: 0.5rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+    z-index: -1;
+  }
+}
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8) translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleDown {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8) translateY(1000px);
+    opacity: 0;
+  }
+}
+@keyframes quickScaleDown {
+  0% {
+    transform: scale(1);
+  }
+  99.9% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
